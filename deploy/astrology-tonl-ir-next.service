@@ -1,0 +1,15 @@
+[Unit]
+Description=Static site for astrology.tonl.ir (serve out/)
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+WorkingDirectory=/var/www/astrology.tonl.ir
+ExecStart=/usr/bin/npm run start
+Restart=on-failure
+RestartSec=5
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target

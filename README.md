@@ -9,9 +9,25 @@
 npm install
 npm run dev      # حالت توسعه  → http://localhost:3000
 npm run build    # خروجی استاتیک در پوشه‌ی out/
+npm start        # سرو کردن out/ روی 127.0.0.1:3040
 ```
 
 پوشه‌ی `out/` را روی هر هاست استاتیکی (Vercel، Netlify، Cloudflare Pages، cPanel، لیارا، …) آپلود کنید.
+
+### systemd روی VPS (پورت 3040)
+
+سایت با `output: "export"` استاتیک است؛ **`next start` کار نمی‌کند**. بعد از `npm run build` سرویس باید `out/` را سرو کند:
+
+```bash
+npm install
+npm run build
+sudo cp deploy/astrology-tonl-ir-next.service /etc/systemd/system/
+# مسیر WorkingDirectory و User را در فایل سرویس با سرور خودتان هماهنگ کنید
+sudo systemctl daemon-reload
+sudo systemctl enable --now astrology-tonl-ir-next
+```
+
+یا بدون Node، مستقیم با Nginx ریشهٔ سایت را روی پوشه‌ی `out/` بگذارید.
 
 ## ویرایش محتوا (بدون نیاز به کدنویسی)
 
