@@ -1,8 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // خروجی کاملاً استاتیک (پوشه‌ی out/) — بدون سرور و پایگاه داده
-  output: "export",
+  // سرور Node با next start (سازگار با systemd پنل میزبانی)
   trailingSlash: true,
   images: { unoptimized: true },
   reactStrictMode: true,

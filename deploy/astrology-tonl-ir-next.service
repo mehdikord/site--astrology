@@ -1,12 +1,12 @@
 [Unit]
-Description=Static site for astrology.tonl.ir (serve out/)
+Description=Next.js app for astrology.tonl.ir
 After=network.target
 
 [Service]
 Type=simple
 User=www-data
 WorkingDirectory=/var/www/astrology.tonl.ir
-ExecStart=/usr/bin/npm run start
+ExecStart=/bin/bash -c './node_modules/.bin/next start -H 127.0.0.1 -p 3040'
 Restart=on-failure
 RestartSec=5
 Environment=NODE_ENV=production
