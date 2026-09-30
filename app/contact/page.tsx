@@ -72,7 +72,7 @@ export default function ContactPage() {
                     {f.q}
                     <ChevronDown className="h-4 w-4" />
                   </summary>
-                  <div className="px-5 pb-5 text-sm leading-8 text-muted">{f.a}</div>
+                  <div className="px-4 pb-5 text-sm leading-8 text-muted sm:px-5">{f.a}</div>
                 </details>
               </Reveal>
             ))}

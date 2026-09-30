@@ -15,18 +15,20 @@ export default function Process() {
     <section className="section">
       <div className="container-x">
         <SectionHeader eyebrow="روند کار" title="از سفارش تا دریافت نقشه‌ات، در چهار قدم" desc="ساده، شفاف و بدون پیچیدگی. تمام مراحل آنلاین انجام می‌شود." />
-        <div className="relative mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="relative mt-10 grid gap-4 sm:mt-16 sm:gap-6 md:grid-cols-2 lg:grid-cols-4">
           <div className="pointer-events-none absolute inset-x-12 top-12 hidden h-px bg-gradient-to-l from-transparent via-gold-500/40 to-transparent lg:block" />
           {STEPS.map((s, i) => (
             <Reveal key={s.title} delay={i * 120} className="relative">
-              <div className="glass rounded-3xl p-7 text-center">
-                <div className="relative mx-auto grid h-16 w-16 place-items-center rounded-full border border-gold-500/40 bg-night-900 text-gold-300">
+              <div className="glass flex h-full items-start gap-5 rounded-3xl p-5 text-start sm:p-7 md:block md:text-center">
+                <div className="relative grid h-14 w-14 shrink-0 place-items-center rounded-full border border-gold-500/40 bg-night-900 text-gold-300 md:mx-auto md:h-16 md:w-16">
                   <span className="absolute inset-0 rounded-full border border-gold-500/30 animate-pulse-ring" style={{ animationDelay: `${i * 0.6}s` }} />
-                  <s.icon className="h-6 w-6" />
+                  <s.icon className="h-5 w-5 md:h-6 md:w-6" />
                 </div>
-                <div className="mt-5 text-[11px] tracking-[0.3em] text-gold-500/70">قدم {toFa(i + 1)}</div>
-                <h3 className="mt-2 text-lg font-extrabold text-cream">{s.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-muted">{s.desc}</p>
+                <div className="min-w-0">
+                  <div className="text-[11px] tracking-[0.3em] text-gold-500/70 md:mt-5">قدم {toFa(i + 1)}</div>
+                  <h3 className="mt-1.5 text-lg font-extrabold text-cream md:mt-2">{s.title}</h3>
+                  <p className="mt-2 text-sm leading-7 text-muted md:mt-3">{s.desc}</p>
+                </div>
               </div>
             </Reveal>
           ))}

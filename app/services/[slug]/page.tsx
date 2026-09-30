@@ -7,6 +7,7 @@ import PageHeader from "@/components/layout/PageHeader";
 import Reveal from "@/components/ui/Reveal";
 import ServiceIcon from "@/components/ui/ServiceIcon";
 import ServiceCard from "@/components/cards/ServiceCard";
+import MobileBuyBar from "@/components/ui/MobileBuyBar";
 import { services, getService } from "@/data/services";
 import { orderLink, site } from "@/data/site";
 import { price, toFa } from "@/lib/format";
@@ -38,11 +39,11 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
         {/* محتوا */}
         <article className="lg:col-span-8">
           <Reveal>
-            <div className="relative aspect-[16/8] overflow-hidden rounded-3xl border border-gold-500/20">
+            <div className="relative aspect-[16/10] overflow-hidden rounded-3xl border border-gold-500/20 sm:aspect-[16/8]">
               <Image src={s.image} alt={s.title} fill priority sizes="(max-width: 1024px) 100vw, 60vw" className="object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-night-950/80 to-transparent" />
-              <div className="absolute bottom-6 right-6 grid h-16 w-16 place-items-center rounded-2xl border border-gold-500/40 bg-night-950/70 text-gold-300 backdrop-blur">
-                <ServiceIcon name={s.icon} className="h-8 w-8" />
+              <div className="absolute bottom-4 right-4 grid h-12 w-12 place-items-center rounded-2xl sm:bottom-6 sm:right-6 sm:h-16 sm:w-16 border border-gold-500/40 bg-night-950/70 text-gold-300 backdrop-blur">
+                <ServiceIcon name={s.icon} className="h-6 w-6 sm:h-8 sm:w-8" />
               </div>
             </div>
           </Reveal>
@@ -110,7 +111,7 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
                     {f.q}
                     <ChevronDown className="h-4 w-4" />
                   </summary>
-                  <div className="px-5 pb-5 text-sm leading-8 text-muted">{f.a}</div>
+                  <div className="px-4 pb-5 text-sm leading-8 text-muted sm:px-5">{f.a}</div>
                 </details>
               ))}
             </div>
@@ -160,6 +161,11 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
           </p>
         </div>
       </section>
+
+      <MobileBuyBar label="هزینه‌ی تحلیل" price={price(s.price)} href={orderLink(s.title)}>
+        <Sparkles className="h-4 w-4" />
+        ثبت سفارش
+      </MobileBuyBar>
     </>
   );
 }

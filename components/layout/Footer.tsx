@@ -14,8 +14,8 @@ export default function Footer() {
       </div>
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold-500/50 to-transparent" />
 
-      <div className="container-x relative grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-12">
-        <div className="lg:col-span-4">
+      <div className="container-x relative grid grid-cols-2 gap-x-6 gap-y-10 py-14 sm:gap-12 sm:py-16 lg:grid-cols-12">
+        <div className="col-span-2 md:col-span-1 lg:col-span-4">
           <Logo />
           <p className="mt-6 max-w-sm leading-8 text-muted">{site.description}</p>
           <p className="script mt-5 text-lg text-gold-400/80">Astrology is a language of the soul</p>
@@ -66,11 +66,11 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div className="lg:col-span-3">
+        <div className="col-span-2 md:col-span-1 lg:col-span-3">
           <h4 className="mb-5 text-sm font-bold tracking-wider text-gold-400">تماس</h4>
           <ul className="space-y-4 text-sm text-cream/70">
             <li className="flex items-start gap-3"><Phone className="mt-1 h-4 w-4 shrink-0 text-gold-500" /><a href={`tel:+${site.phoneRaw}`} dir="ltr" className="hover:text-gold-300">{site.phone}</a></li>
-            <li className="flex items-start gap-3"><Mail className="mt-1 h-4 w-4 shrink-0 text-gold-500" /><a href={`mailto:${site.email}`} className="hover:text-gold-300">{site.email}</a></li>
+            <li className="flex items-start gap-3"><Mail className="mt-1 h-4 w-4 shrink-0 text-gold-500" /><a href={`mailto:${site.email}`} className="break-all hover:text-gold-300">{site.email}</a></li>
             <li className="flex items-start gap-3"><MapPin className="mt-1 h-4 w-4 shrink-0 text-gold-500" /><span>{site.address}</span></li>
             <li className="flex items-start gap-3"><Clock className="mt-1 h-4 w-4 shrink-0 text-gold-500" /><span>{site.hours}</span></li>
           </ul>

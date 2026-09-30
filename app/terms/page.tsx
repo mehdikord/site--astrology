@@ -80,9 +80,9 @@ export default function TermsPage() {
         <div className="space-y-6 lg:col-span-9">
           {SECTIONS.map((s, i) => (
             <Reveal key={s.t} delay={i * 60}>
-              <section id={`s${i + 1}`} className="glass scroll-mt-28 rounded-3xl p-7 sm:p-9">
-                <h2 className="flex items-center gap-3 text-xl font-extrabold text-cream">
-                  <span className="grid h-9 w-9 place-items-center rounded-xl bg-gold-500/10 text-sm text-gold-300">{toFa(i + 1)}</span>
+              <section id={`s${i + 1}`} className="glass scroll-mt-24 rounded-3xl p-5 sm:p-9">
+                <h2 className="flex items-center gap-3 text-lg font-extrabold text-cream sm:text-xl">
+                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-gold-500/10 text-sm text-gold-300">{toFa(i + 1)}</span>
                   {s.t}
                 </h2>
                 <ul className="mt-5 space-y-3">

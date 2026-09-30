@@ -18,13 +18,13 @@ export const site = {
   hours: "شنبه تا پنجشنبه، ۱۰ تا ۱۸",
 
   // شبکه‌های اجتماعی
-  instagram: "https://instagram.com/fatemehyousefi",
-  telegram: "https://t.me/fatemehyousefi",
+  instagram: "https://instagram.com/",
+  telegram: "https://t.me/",
   whatsapp: "https://wa.me/989120000000",
   youtube: "",
 
   // لینک ثبت سفارش / خرید (تلگرام، واتس‌اپ یا درگاه پرداخت)
-  orderUrl: "https://t.me/fatemehyousefi",
+  orderUrl: "https://t.me",
 };
 
 export const nav = [

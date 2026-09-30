@@ -19,10 +19,10 @@ export default function BlogPage() {
       <PageHeader eyebrow="Journal" title="مقالات" desc="نوشته‌هایی ساده و عمیق برای کسانی که می‌خواهند آسمان را بهتر بفهمند." crumbs={[{ label: "مقالات" }]} />
 
       <section className="container-x -mt-6">
-        <Reveal className="mb-8 flex flex-wrap gap-2">
-          <span className="rounded-full bg-gold-500 px-4 py-1.5 text-xs font-bold text-night-950">همه</span>
+        <Reveal className="-mx-5 mb-8 flex gap-2 overflow-x-auto px-5 pb-1 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0">
+          <span className="shrink-0 rounded-full bg-gold-500 px-4 py-1.5 text-xs font-bold text-night-950">همه</span>
           {categories.map((c) => (
-            <span key={c} className="rounded-full border border-gold-500/25 px-4 py-1.5 text-xs text-cream/80">{c}</span>
+            <span key={c} className="shrink-0 rounded-full border border-gold-500/25 px-4 py-1.5 text-xs text-cream/80">{c}</span>
           ))}
         </Reveal>
         <Reveal>

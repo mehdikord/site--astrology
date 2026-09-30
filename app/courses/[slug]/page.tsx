@@ -5,6 +5,7 @@ import { Check, ChevronDown, Clock, Layers, MonitorPlay, Signal, ShoppingBag, Se
 import PageHeader from "@/components/layout/PageHeader";
 import Reveal from "@/components/ui/Reveal";
 import CourseCard from "@/components/cards/CourseCard";
+import MobileBuyBar from "@/components/ui/MobileBuyBar";
 import { courses, getCourse } from "@/data/courses";
 import { orderLink, site } from "@/data/site";
 import { price, toFa, discount } from "@/lib/format";
@@ -36,15 +37,15 @@ export default async function CoursePage({ params }: { params: Promise<Params> }
       <div className="container-x grid gap-10 pb-10 lg:grid-cols-12">
         <article className="lg:col-span-8">
           <Reveal>
-            <div className="relative aspect-[16/8] overflow-hidden rounded-3xl border border-gold-500/20">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-gold-500/20 sm:aspect-[16/8]">
               <Image src={c.image} alt={c.title} fill priority sizes="(max-width: 1024px) 100vw, 60vw" className="object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-night-950/80 to-transparent" />
               <div className="absolute inset-0 grid place-items-center">
-                <span className="grid h-20 w-20 place-items-center rounded-full border border-gold-500/50 bg-night-950/50 text-gold-300 backdrop-blur transition hover:scale-105">
-                  <PlayCircle className="h-9 w-9" />
+                <span className="grid h-16 w-16 place-items-center rounded-full border border-gold-500/50 sm:h-20 sm:w-20 bg-night-950/50 text-gold-300 backdrop-blur transition hover:scale-105">
+                  <PlayCircle className="h-8 w-8 sm:h-9 sm:w-9" />
                 </span>
               </div>
-              <div className="absolute bottom-5 right-5 flex flex-wrap gap-2 text-[11px]">
+              <div className="absolute bottom-4 right-4 left-4 flex flex-wrap gap-2 text-[11px] sm:bottom-5 sm:right-5">
                 <span className="rounded-full border border-gold-500/30 bg-night-950/70 px-3 py-1 text-gold-300 backdrop-blur">{c.level}</span>
                 <span className="rounded-full border border-gold-500/30 bg-night-950/70 px-3 py-1 text-cream/85 backdrop-blur">{toFa(c.hours)} ساعت</span>
                 <span className="rounded-full border border-gold-500/30 bg-night-950/70 px-3 py-1 text-cream/85 backdrop-blur">{toFa(lessonCount)} درس</span>
@@ -76,16 +77,16 @@ export default async function CoursePage({ params }: { params: Promise<Params> }
               {c.curriculum.map((m, i) => (
                 <details key={m.title} className="accordion" open={i === 0}>
                   <summary>
-                    <span className="flex items-center gap-3">
-                      <span className="grid h-8 w-8 place-items-center rounded-lg bg-gold-500/10 text-xs text-gold-300">{toFa(i + 1)}</span>
+                    <span className="flex min-w-0 items-center gap-3">
+                      <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-gold-500/10 text-xs text-gold-300">{toFa(i + 1)}</span>
                       {m.title}
                     </span>
-                    <span className="flex items-center gap-3 text-xs font-normal text-muted">
+                    <span className="flex shrink-0 items-center gap-3 whitespace-nowrap text-xs font-normal text-muted">
                       {toFa(m.lessons.length)} درس
                       <ChevronDown className="h-4 w-4" />
                     </span>
                   </summary>
-                  <ul className="space-y-2 px-5 pb-5">
+                  <ul className="space-y-2 px-4 pb-4 sm:px-5 sm:pb-5">
                     {m.lessons.map((l) => (
                       <li key={l} className="flex items-center gap-3 rounded-xl bg-white/[0.02] px-4 py-2.5 text-sm text-cream/80">
                         <PlayCircle className="h-4 w-4 shrink-0 text-gold-500/70" />
@@ -166,6 +167,11 @@ export default async function CoursePage({ params }: { params: Promise<Params> }
           </div>
         </div>
       </section>
+
+      <MobileBuyBar label="هزینه‌ی دوره" price={price(c.price)} oldPrice={c.oldPrice ? price(c.oldPrice) : undefined} href={orderLink(`دوره‌ی ${c.title}`)}>
+        <ShoppingBag className="h-4 w-4" />
+        ثبت‌نام
+      </MobileBuyBar>
     </>
   );
 }

@@ -83,23 +83,23 @@ export default function Hero() {
             نقشه‌ات را بخوان؛ آسمان از لحظه‌ی تولد با تو حرف می‌زند.
           </p>
 
-          <div className="mt-9 flex flex-wrap items-center gap-4 animate-fade-up [animation-delay:1100ms]">
-            <Link href="/services/matrix" className="btn btn-gold px-8 py-3.5 text-base">
+          <div className="mt-9 flex flex-col gap-3 animate-fade-up [animation-delay:1100ms] sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
+            <Link href="/services/matrix" className="btn btn-gold w-full px-8 py-3.5 text-base sm:w-auto">
               <Sparkles className="h-4 w-4" />
               شروع تحلیل چارت
             </Link>
-            <span className="star-border">
-              <Link href="/services" className="btn btn-ghost px-7 py-3.5 text-base">
+            <span className="star-border block w-full sm:inline-block sm:w-auto">
+              <Link href="/services" className="btn btn-ghost w-full px-7 py-3.5 text-base sm:w-auto">
                 مشاهده خدمات
                 <ChevronLeft className="h-4 w-4" />
               </Link>
             </span>
           </div>
 
-          <div className="mt-12 flex items-center gap-8 animate-fade-up [animation-delay:1250ms] sm:gap-12">
+          <div className="mt-10 grid grid-cols-3 gap-4 animate-fade-up [animation-delay:1250ms] sm:mt-12 sm:flex sm:items-center sm:gap-12">
             {stats.map((s) => (
               <div key={s.label}>
-                <div className="text-2xl font-extrabold text-gold-300 sm:text-3xl" dir="ltr">{s.value}</div>
+                <div className="text-right text-2xl font-extrabold text-gold-300 sm:text-3xl" dir="ltr">{s.value}</div>
                 <div className="mt-1 text-xs text-muted">{s.label}</div>
               </div>
             ))}

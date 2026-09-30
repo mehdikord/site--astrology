@@ -31,12 +31,12 @@ export default function AboutPage() {
 
       <section className="container-x -mt-6 grid items-center gap-14 lg:grid-cols-12">
         <Reveal className="relative lg:col-span-5">
-          <div className="relative mx-auto aspect-[3/4] w-full max-w-md">
+          <div className="relative mx-auto aspect-[3/4] w-[86%] max-w-md sm:w-full">
             <div className="absolute -inset-4 rounded-t-full rounded-b-[2rem] border border-gold-500/25" />
             <div className="relative h-full w-full overflow-hidden rounded-t-full rounded-b-[1.6rem] shadow-[0_40px_100px_-30px_rgba(212,175,55,.35)]">
               <Image src="/images/about.webp" alt={site.name} fill sizes="(max-width: 1024px) 90vw, 35vw" className="object-cover" />
             </div>
-            <div className="absolute -bottom-8 -left-4 h-40 w-40 text-gold-500/40 sm:-left-10">
+            <div className="absolute -bottom-8 -left-6 h-32 w-32 text-gold-500/40 sm:-left-10 sm:h-40 sm:w-40">
               <ZodiacWheel className="h-full w-full animate-spin-slow" glyphs={false} />
             </div>
           </div>

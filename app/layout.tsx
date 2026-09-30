@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "@fontsource-variable/vazirmatn";
 import "@fontsource/cormorant-garamond/500-italic.css";
 import "./globals.css";
@@ -25,13 +25,20 @@ export const metadata: Metadata = {
   icons: { icon: "/icon.svg" },
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#06070d",
+  colorScheme: "dark",
+};
+
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="fa" dir="rtl">
       <body className="min-h-screen">
         <CosmicBackground />
         <Navbar />
-        <main>{children}</main>
+        <main className="overflow-x-clip">{children}</main>
         <Footer />
       </body>
     </html>

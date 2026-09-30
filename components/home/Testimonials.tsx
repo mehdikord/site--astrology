@@ -8,7 +8,7 @@ export default function Testimonials() {
     <section className="section">
       <div className="container-x">
         <SectionHeader eyebrow="تجربه‌ها" title="آن‌چه دیگران دیده‌اند" />
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
+        <div className="mt-10 grid gap-6 sm:mt-14 md:grid-cols-3">
           {testimonials.map((t, i) => (
             <Reveal key={t.name} delay={i * 120}>
               <figure className="glass glass-hover relative h-full rounded-3xl p-7">

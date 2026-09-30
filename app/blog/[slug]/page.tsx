@@ -54,7 +54,7 @@ export default async function PostPage({ params }: { params: Promise<Params> }) 
         <Galaxy density={0.8} glowIntensity={0.2} rotationSpeed={0.02} repulsionStrength={1} />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-night-950 to-transparent" />
         <div className="container-x relative max-w-4xl">
-          <nav className="mb-6 flex items-center gap-1 text-xs text-muted">
+          <nav className="mb-6 flex flex-wrap items-center gap-1 text-xs text-muted" aria-label="مسیر صفحه">
             <Link href="/" className="hover:text-gold-300">خانه</Link>
             <ChevronLeft className="h-3 w-3 text-gold-500/60" />
             <Link href="/blog" className="hover:text-gold-300">مقالات</Link>
@@ -63,7 +63,7 @@ export default async function PostPage({ params }: { params: Promise<Params> }) 
           </nav>
           <span className="eyebrow animate-fade-up">{p.category}</span>
           <h1 className="mt-4 text-3xl leading-[1.3] text-cream animate-fade-up [animation-delay:120ms] sm:text-4xl lg:text-5xl">{p.title}</h1>
-          <div className="mt-6 flex items-center gap-5 text-sm text-muted animate-fade-up [animation-delay:240ms]">
+          <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted animate-fade-up [animation-delay:240ms]">
             <span className="inline-flex items-center gap-1.5"><CalendarDays className="h-4 w-4 text-gold-500" />{p.date}</span>
             <span className="inline-flex items-center gap-1.5"><Timer className="h-4 w-4 text-gold-500" />{toFa(p.readTime)} دقیقه مطالعه</span>
           </div>
@@ -72,12 +72,12 @@ export default async function PostPage({ params }: { params: Promise<Params> }) 
 
       <article className="container-x max-w-4xl">
         <Reveal>
-          <div className="relative aspect-[16/8] overflow-hidden rounded-3xl border border-gold-500/20">
+          <div className="relative aspect-[16/10] overflow-hidden rounded-3xl border border-gold-500/20 sm:aspect-[16/8]">
             <Image src={p.image} alt={p.title} fill priority sizes="(max-width: 1024px) 100vw, 900px" className="object-cover" />
           </div>
         </Reveal>
-        <Reveal className="prose-fa mx-auto mt-12 max-w-3xl text-[1.05rem]">
-          <p className="!text-xl !leading-10 !text-cream/90">{p.excerpt}</p>
+        <Reveal className="prose-fa mx-auto mt-10 max-w-3xl text-[1.05rem] sm:mt-12">
+          <p className="!text-lg !leading-9 !text-cream/90 sm:!text-xl sm:!leading-10">{p.excerpt}</p>
           {p.content.map(renderBlock)}
         </Reveal>
 
