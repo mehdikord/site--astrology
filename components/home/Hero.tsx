@@ -3,11 +3,14 @@ import Image from "next/image";
 import { Sparkles, ChevronLeft } from "lucide-react";
 import Galaxy from "@/components/ui/Galaxy";
 import ZodiacWheel from "@/components/ui/ZodiacWheel";
-import { stats } from "@/data/site";
+import { getSettings } from "@/lib/settings";
+import { getServices } from "@/lib/content";
 
 const TITLE = ["رازهای", "چارت", "تولد", "تو", "را", "کشف", "کن"];
 
-export default function Hero() {
+export default async function Hero() {
+  const [{ stats }, services] = await Promise.all([getSettings(), getServices()]);
+  const startHref = services[0] ? `/services/${services[0].slug}` : "/services";
   return (
     <section className="relative min-h-[100svh] overflow-hidden">
       {/* لایه‌ی کهکشان (WebGL) */}
@@ -84,7 +87,7 @@ export default function Hero() {
           </p>
 
           <div className="mt-9 flex flex-col gap-3 animate-fade-up [animation-delay:1100ms] sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
-            <Link href="/services/matrix" className="btn btn-gold w-full px-8 py-3.5 text-base sm:w-auto">
+            <Link href={startHref} className="btn btn-gold w-full px-8 py-3.5 text-base sm:w-auto">
               <Sparkles className="h-4 w-4" />
               شروع تحلیل چارت
             </Link>

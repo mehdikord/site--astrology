@@ -1,9 +1,11 @@
 import Link from "next/link";
 import Reveal from "@/components/ui/Reveal";
 import ServiceCard from "@/components/cards/ServiceCard";
-import { services } from "@/data/services";
+import { getServices } from "@/lib/content";
 
-export default function Services() {
+export default async function Services() {
+  const services = await getServices();
+  if (services.length === 0) return null;
   return (
     <section id="services" className="relative z-20 -mt-36">
       <div className="container-x">

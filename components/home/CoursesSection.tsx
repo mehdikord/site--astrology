@@ -3,9 +3,11 @@ import { ChevronLeft } from "lucide-react";
 import SectionHeader from "@/components/ui/SectionHeader";
 import Reveal from "@/components/ui/Reveal";
 import CourseCard from "@/components/cards/CourseCard";
-import { courses } from "@/data/courses";
+import { getCourses } from "@/lib/content";
 
-export default function CoursesSection() {
+export default async function CoursesSection() {
+  const courses = await getCourses();
+  if (courses.length === 0) return null;
   return (
     <section className="section">
       <div className="pointer-events-none absolute left-1/2 top-10 -z-10 h-[420px] w-[820px] max-w-full -translate-x-1/2 rounded-full bg-gold-500/[0.05] blur-3xl" />

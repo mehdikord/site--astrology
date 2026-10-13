@@ -1,10 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { CalendarDays, Timer } from "lucide-react";
-import type { Post } from "@/data/posts";
+import type { PostView } from "@/lib/content";
 import { toFa } from "@/lib/format";
 
-export default function PostCard({ post, featured = false }: { post: Post; featured?: boolean }) {
+export default function PostCard({ post, featured = false }: { post: PostView; featured?: boolean }) {
   return (
     <Link
       href={`/blog/${post.slug}`}

@@ -2,10 +2,10 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import TiltCard from "@/components/ui/TiltCard";
 import ServiceIcon from "@/components/ui/ServiceIcon";
-import type { Service } from "@/data/services";
+import type { ServiceView } from "@/lib/content";
 import { price } from "@/lib/format";
 
-export default function ServiceCard({ service, showPrice = true }: { service: Service; showPrice?: boolean }) {
+export default function ServiceCard({ service, showPrice = true }: { service: ServiceView; showPrice?: boolean }) {
   return (
     <TiltCard className="h-full rounded-3xl">
       <Link

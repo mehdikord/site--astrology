@@ -7,9 +7,11 @@ import { X, Sparkles, ChevronLeft, Send, Phone } from "lucide-react";
 import Logo from "@/components/ui/Logo";
 import Instagram from "@/components/ui/InstagramIcon";
 import ZodiacWheel from "@/components/ui/ZodiacWheel";
-import { nav, site } from "@/data/site";
+import { nav, type SiteSettings } from "@/lib/site-config";
 
-export default function Navbar() {
+type NavbarSite = Pick<SiteSettings, "name" | "nameEn" | "instagram" | "telegram" | "whatsapp">;
+
+export default function Navbar({ site }: { site: NavbarSite }) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -50,7 +52,7 @@ export default function Navbar() {
       >
         <div className={`absolute inset-x-0 bottom-0 divider-gold transition-opacity duration-500 ${scrolled ? "opacity-100" : "opacity-0"}`} />
         <div className="container-x flex h-16 items-center justify-between sm:h-20">
-          <Logo />
+          <Logo name={site.name} nameEn={site.nameEn} />
 
           <nav className="hidden items-center gap-1 lg:flex" aria-label="منوی اصلی">
             {nav.map((item) => {
@@ -120,7 +122,7 @@ export default function Navbar() {
           <div className="pointer-events-none absolute inset-y-0 left-0 w-px bg-gradient-to-b from-transparent via-gold-500/50 to-transparent" />
 
           <div className="relative flex h-16 shrink-0 items-center justify-between border-b border-gold-500/10 px-5 sm:h-20">
-            <Logo />
+            <Logo name={site.name} nameEn={site.nameEn} />
             <button
               type="button"
               onClick={() => setOpen(false)}

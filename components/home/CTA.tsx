@@ -3,15 +3,16 @@ import { Sparkles, Send } from "lucide-react";
 import Galaxy from "@/components/ui/Galaxy";
 import ZodiacWheel from "@/components/ui/ZodiacWheel";
 import Reveal from "@/components/ui/Reveal";
-import { site } from "@/data/site";
+import { getSettings } from "@/lib/settings";
 
-export default function CTA({
+export default async function CTA({
   title = "آماده‌ای نقشه‌ی آسمانت را بخوانی؟",
   desc = "همین امروز تحلیل خودت را سفارش بده و در چند روز آینده، تصویری روشن از مسیرت در دست داشته باش.",
 }: {
   title?: string;
   desc?: string;
 }) {
+  const site = await getSettings();
   return (
     <section className="section">
       <div className="container-x">

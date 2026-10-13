@@ -1,71 +1,81 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
-import { Send, Mail, ChevronDown } from "lucide-react";
-import { site } from "@/data/site";
-import { services } from "@/data/services";
+import { useActionState, useEffect, useState, type ChangeEvent } from "react";
+import { Send, ChevronDown, Loader2, CheckCircle2 } from "lucide-react";
+import { sendContactMessage, type ContactState } from "@/app/(site)/contact/actions";
 
-/**
- * فرم تماس (استاتیک) — پیام را به تلگرام/واتس‌اپ یا ایمیل هدایت می‌کند.
- * برای دریافت مستقیم پیام‌ها می‌توانید action فرم را به Formspree / Getform وصل کنید.
- */
-export default function ContactForm() {
-  const [form, setForm] = useState({ name: "", contact: "", subject: services[0].title, message: "" });
-  const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
+/** فرم تماس — پیام در دیتابیس ذخیره و در پنل مدیریت (پیام‌ها) نمایش داده می‌شود */
+export default function ContactForm({ subjects, telegram }: { subjects: string[]; telegram: string }) {
+  const [state, action, pending] = useActionState<ContactState, FormData>(sendContactMessage, {});
+  const [form, setForm] = useState({ name: "", contact: "", subject: subjects[0] ?? "", message: "" });
+  const set = (k: keyof typeof form) => (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
     setForm({ ...form, [k]: e.target.value });
 
-  const body = () =>
-    `سلام، ${form.name} هستم.\nموضوع: ${form.subject}\n\n${form.message}\n\nراه تماس: ${form.contact}`;
+  useEffect(() => {
+    if (state.ok) setForm((f) => ({ ...f, message: "" }));
+  }, [state]);
 
-  const sendTelegram = (e: FormEvent) => {
-    e.preventDefault();
-    window.open(`${site.telegram}?text=${encodeURIComponent(body())}`, "_blank");
-  };
-  const sendEmail = () => {
-    window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(form.subject)}&body=${encodeURIComponent(body())}`;
-  };
+  const telegramHref = `${telegram}?text=${encodeURIComponent(
+    `سلام، ${form.name} هستم.\nموضوع: ${form.subject}\n\n${form.message}\n\nراه تماس: ${form.contact}`,
+  )}`;
+  const err = (k: string) => state.errors?.[k];
+  const errorCls = (k: string) => (err(k) ? " !border-rose-500/60" : "");
 
   return (
-    <form onSubmit={sendTelegram} className="glass rounded-3xl p-5 sm:p-9">
+    <form action={action} className="glass rounded-3xl p-5 sm:p-9">
+      {/* فیلد تله برای ربات‌ها */}
+      <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
+
+      {state.ok && state.message && (
+        <div role="status" className="mb-6 flex items-start gap-3 rounded-2xl border border-emerald-500/25 bg-emerald-500/[0.07] px-4 py-3.5 text-sm leading-7 text-emerald-100">
+          <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-emerald-400" />
+          {state.message}
+        </div>
+      )}
+      {state.ok === false && state.message && (
+        <div role="alert" className="mb-6 rounded-2xl border border-rose-500/25 bg-rose-500/[0.07] px-4 py-3.5 text-sm text-rose-200">{state.message}</div>
+      )}
+
       <div className="grid gap-5 sm:grid-cols-2">
         <label className="block">
           <span className="mb-2 block text-xs text-muted">نام و نام خانوادگی</span>
-          <input required className="input" placeholder="مثلاً: نگار محمدی" value={form.name} onChange={set("name")} />
+          <input required name="name" className={"input" + errorCls("name")} placeholder="مثلاً: نگار محمدی" value={form.name} onChange={set("name")} />
+          {err("name") && <span className="mt-1.5 block text-xs text-rose-400">{err("name")}</span>}
         </label>
         <label className="block">
           <span className="mb-2 block text-xs text-muted">شماره تماس یا ایمیل</span>
-          <input required className="input" placeholder="۰۹۱۲..." value={form.contact} onChange={set("contact")} />
+          <input required name="contact" className={"input" + errorCls("contact")} placeholder="۰۹۱۲..." value={form.contact} onChange={set("contact")} />
+          {err("contact") && <span className="mt-1.5 block text-xs text-rose-400">{err("contact")}</span>}
         </label>
       </div>
       <label className="mt-5 block">
         <span className="mb-2 block text-xs text-muted">موضوع</span>
         <span className="relative block">
-          <select className="input appearance-none pl-10" value={form.subject} onChange={set("subject")}>
-            {services.map((s) => (
-              <option key={s.slug} value={s.title} className="bg-night-900">{s.title}</option>
+          <select name="subject" className="input appearance-none pl-10" value={form.subject} onChange={set("subject")}>
+            {subjects.map((s) => (
+              <option key={s} value={s} className="bg-night-900">{s}</option>
             ))}
-            <option value="دوره‌های آموزشی" className="bg-night-900">دوره‌های آموزشی</option>
-            <option value="همکاری" className="bg-night-900">همکاری</option>
-            <option value="سایر" className="bg-night-900">سایر</option>
           </select>
           <ChevronDown className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-gold-500" />
         </span>
       </label>
       <label className="mt-5 block">
         <span className="mb-2 block text-xs text-muted">پیام</span>
-        <textarea required rows={5} className="input resize-none" placeholder="سوال یا توضیحت را بنویس..." value={form.message} onChange={set("message")} />
+        <textarea required name="message" rows={5} className={"input resize-none" + errorCls("message")} placeholder="سوال یا توضیحت را بنویس..." value={form.message} onChange={set("message")} />
+        {err("message") && <span className="mt-1.5 block text-xs text-rose-400">{err("message")}</span>}
       </label>
       <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-        <button type="submit" className="btn btn-gold w-full px-7 py-3.5 sm:w-auto sm:py-3">
-          <Send className="h-4 w-4" />
-          ارسال در تلگرام
+        <button type="submit" disabled={pending} className="btn btn-gold w-full px-7 py-3.5 disabled:opacity-60 sm:w-auto sm:py-3">
+          {pending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
+          ارسال پیام
         </button>
-        <button type="button" onClick={sendEmail} className="btn btn-ghost w-full py-3.5 sm:w-auto sm:py-3">
-          <Mail className="h-4 w-4" />
-          ارسال با ایمیل
-        </button>
+        {telegram && (
+          <a href={telegramHref} target="_blank" rel="noreferrer" className="btn btn-ghost w-full py-3.5 sm:w-auto sm:py-3">
+            ارسال در تلگرام
+          </a>
+        )}
       </div>
-      <p className="mt-4 text-[11px] leading-6 text-muted">با ارسال پیام، متن شما در تلگرام یا ایمیل باز می‌شود تا مستقیماً برای ما بفرستید. معمولاً ظرف ۲۴ ساعت پاسخ می‌دهیم.</p>
+      <p className="mt-4 text-[11px] leading-6 text-muted">پیامت مستقیماً برای ما ثبت می‌شود و معمولاً ظرف ۲۴ ساعت پاسخ می‌دهیم. برای پاسخ سریع‌تر می‌توانی در تلگرام هم پیام بدهی.</p>
     </form>
   );
 }

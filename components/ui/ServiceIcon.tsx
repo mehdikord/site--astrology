@@ -1,4 +1,4 @@
-import type { ServiceIcon as IconName } from "@/data/services";
+import type { ServiceIconName as IconName } from "@/lib/content";
 
 /** آیکن‌های اختصاصی خدمات */
 export default function ServiceIcon({ name, className = "h-7 w-7" }: { name: IconName; className?: string }) {

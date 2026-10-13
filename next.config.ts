@@ -5,6 +5,8 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   images: { unoptimized: true },
   reactStrictMode: true,
+  // آپلود فایل در فرم‌های پنل مدیریت (تصویر تا ۳ و گزارش PDF تا ۲۰ مگابایت)
+  experimental: { serverActions: { bodySizeLimit: "21mb" } },
 };
 
 export default nextConfig;

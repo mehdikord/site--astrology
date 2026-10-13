@@ -3,10 +3,13 @@ import { Send, Phone, Mail, MapPin, Clock } from "lucide-react";
 import Instagram from "@/components/ui/InstagramIcon";
 import Logo from "@/components/ui/Logo";
 import ZodiacWheel from "@/components/ui/ZodiacWheel";
-import { site, nav } from "@/data/site";
-import { services } from "@/data/services";
+import { getSettings, nav } from "@/lib/settings";
+import { getServices } from "@/lib/content";
+import { toFa } from "@/lib/format";
+import { dateToJalali } from "@/lib/jalali";
 
-export default function Footer() {
+export default async function Footer() {
+  const [site, services] = await Promise.all([getSettings(), getServices()]);
   return (
     <footer className="relative mt-10 overflow-hidden border-t border-gold-500/10 bg-night-900/60">
       <div className="pointer-events-none absolute -bottom-40 -left-40 h-[520px] w-[520px] text-gold-500/10">
@@ -16,7 +19,7 @@ export default function Footer() {
 
       <div className="container-x relative grid grid-cols-2 gap-x-6 gap-y-10 py-14 sm:gap-12 sm:py-16 lg:grid-cols-12">
         <div className="col-span-2 md:col-span-1 lg:col-span-4">
-          <Logo />
+          <Logo name={site.name} nameEn={site.nameEn} />
           <p className="mt-6 max-w-sm leading-8 text-muted">{site.description}</p>
           <p className="script mt-5 text-lg text-gold-400/80">Astrology is a language of the soul</p>
           <div className="mt-6 flex items-center gap-3">
@@ -79,7 +82,7 @@ export default function Footer() {
 
       <div className="border-t border-gold-500/10">
         <div className="container-x flex flex-col items-center justify-between gap-3 py-6 text-xs text-muted sm:flex-row">
-          <p>© ۱۴۰۵ {site.name} — تمامی حقوق محفوظ است.</p>
+          <p>© {toFa(dateToJalali(new Date()).jy)} {site.name} — تمامی حقوق محفوظ است.</p>
           <p className="flex items-center gap-2">
             <span className="text-gold-500">✦</span> SAME SOUL · HIGHER PATH
           </p>

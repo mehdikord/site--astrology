@@ -1,0 +1,30 @@
+-- CreateTable
+CREATE TABLE `services` (
+    `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `slug` VARCHAR(255) NOT NULL,
+    `icon` VARCHAR(50) NULL,
+    `title` VARCHAR(255) NOT NULL,
+    `title_en` VARCHAR(255) NULL,
+    `tagline` VARCHAR(255) NULL,
+    `short_description` TEXT NULL,
+    `intro` LONGTEXT NULL,
+    `image` VARCHAR(255) NULL,
+    `price` INTEGER UNSIGNED NOT NULL DEFAULT 0,
+    `old_price` INTEGER UNSIGNED NULL,
+    `duration` VARCHAR(255) NULL,
+    `format` VARCHAR(255) NULL,
+    `delivery` VARCHAR(255) NULL,
+    `for_who` JSON NULL,
+    `deliverables` JSON NULL,
+    `requirements` JSON NULL,
+    `is_active` BOOLEAN NOT NULL DEFAULT true,
+    `sort_order` INTEGER NOT NULL DEFAULT 0,
+    `meta_title` VARCHAR(255) NULL,
+    `meta_description` TEXT NULL,
+    `created_at` TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
+    `updated_at` TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
+
+    UNIQUE INDEX `services_slug_key`(`slug`),
+    INDEX `services_is_active_sort_order_idx`(`is_active`, `sort_order`),
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;

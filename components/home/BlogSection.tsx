@@ -3,9 +3,11 @@ import { ChevronLeft } from "lucide-react";
 import SectionHeader from "@/components/ui/SectionHeader";
 import Reveal from "@/components/ui/Reveal";
 import PostCard from "@/components/cards/PostCard";
-import { posts } from "@/data/posts";
+import { getPosts } from "@/lib/content";
 
-export default function BlogSection() {
+export default async function BlogSection() {
+  const posts = await getPosts(undefined, 3);
+  if (posts.length === 0) return null;
   return (
     <section className="section">
       <div className="container-x">
@@ -19,7 +21,7 @@ export default function BlogSection() {
           </Reveal>
         </div>
         <div className="mt-8 grid gap-6 sm:mt-12 md:grid-cols-3">
-          {posts.slice(0, 3).map((p, i) => (
+          {posts.map((p, i) => (
             <Reveal key={p.slug} delay={i * 120}>
               <PostCard post={p} />
             </Reveal>

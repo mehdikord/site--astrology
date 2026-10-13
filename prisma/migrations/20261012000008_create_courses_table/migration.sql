@@ -1,0 +1,32 @@
+-- CreateTable
+CREATE TABLE `courses` (
+    `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `slug` VARCHAR(255) NOT NULL,
+    `title` VARCHAR(255) NOT NULL,
+    `subtitle` VARCHAR(255) NULL,
+    `short_description` TEXT NULL,
+    `intro` LONGTEXT NULL,
+    `image` VARCHAR(255) NULL,
+    `intro_video` VARCHAR(500) NULL,
+    `level` VARCHAR(255) NULL,
+    `hours` SMALLINT UNSIGNED NOT NULL DEFAULT 0,
+    `sessions_count` SMALLINT UNSIGNED NOT NULL DEFAULT 0,
+    `format` VARCHAR(255) NULL,
+    `price` INTEGER UNSIGNED NOT NULL DEFAULT 0,
+    `old_price` INTEGER UNSIGNED NULL,
+    `badge` VARCHAR(100) NULL,
+    `learn` JSON NULL,
+    `for_who` JSON NULL,
+    `includes` JSON NULL,
+    `is_active` BOOLEAN NOT NULL DEFAULT true,
+    `sort_order` INTEGER NOT NULL DEFAULT 0,
+    `published_at` TIMESTAMP(0) NULL,
+    `meta_title` VARCHAR(255) NULL,
+    `meta_description` TEXT NULL,
+    `created_at` TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
+    `updated_at` TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
+
+    UNIQUE INDEX `courses_slug_key`(`slug`),
+    INDEX `courses_is_active_sort_order_idx`(`is_active`, `sort_order`),
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;

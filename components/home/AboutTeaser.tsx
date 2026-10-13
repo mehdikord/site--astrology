@@ -2,9 +2,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { ChevronLeft } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
-import { site } from "@/data/site";
+import { getSettings } from "@/lib/settings";
 
-export default function AboutTeaser() {
+export default async function AboutTeaser() {
+  const site = await getSettings();
   return (
     <section className="section">
       <div className="container-x grid items-center gap-16 lg:grid-cols-12 lg:gap-14">
