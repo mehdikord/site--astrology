@@ -29,6 +29,25 @@ sudo systemctl restart astrology-tonl-ir-next
 
 سرویس باید `next start` را اجرا کند (نه `serve out`). نمونه: `deploy/astrology-tonl-ir-next.service`.
 
+در `.env` سرور آدرس عمومی سایت را بگذارید (برای ریدایرکت‌های پنل و فرم‌ها پشت nginx لازم است):
+
+```
+APP_URL="https://astrology.tonl.ir"
+```
+
+و در کانفیگ nginx هدرهای زیر را به Next بفرستید:
+
+```nginx
+location / {
+    proxy_pass http://127.0.0.1:3040;
+    proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-Host $host;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    client_max_body_size 25m;   # آپلود گزارش‌های PDF تا ۲۰ مگابایت
+}
+```
+
 ## ویرایش محتوا — پنل مدیریت (`/admins/`)
 
 همه‌ی محتوا از پنل مدیریت ویرایش می‌شود و صفحات سایت پس از هر ذخیره خودکار به‌روز می‌شوند:
