@@ -24,8 +24,8 @@ export default async function AdminLoginPage({ searchParams }: { searchParams: P
           <div className="flex items-center gap-3">
             <LogoMark className="h-12 w-12" />
             <span className="leading-tight">
-              <span className="block text-lg font-extrabold text-cream">فاطمه یوسفی</span>
-              <span className="block text-[10px] tracking-[0.35em] text-gold-500/80">FATEMEH YOUSEFI</span>
+              <span className="block text-lg font-extrabold text-cream">کژال متد</span>
+              <span className="block text-[10px] tracking-[0.35em] text-gold-500/80">KAZHAL METHOD</span>
             </span>
           </div>
           <div className="max-w-md">
@@ -37,7 +37,7 @@ export default async function AdminLoginPage({ searchParams }: { searchParams: P
               از این پنل خدمات و تحلیل‌ها، سوالات متداول و کاربران سایت را مدیریت کنید.
             </p>
           </div>
-          <p className="text-xs text-muted/70">© ۱۴۰۵ فاطمه یوسفی — دسترسی فقط برای مدیران</p>
+          <p className="text-xs text-muted/70">© ۱۴۰۵ کژال متد — دسترسی فقط برای مدیران</p>
         </div>
       </div>
 

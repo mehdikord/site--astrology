@@ -6,7 +6,7 @@ import { toFa } from "@/lib/format";
 
 export const metadata: Metadata = {
   title: "قوانین و مقررات",
-  description: "شرایط استفاده از خدمات و دوره‌های فاطمه یوسفی، سیاست بازگشت وجه، حریم خصوصی و محدودیت مسئولیت.",
+  description: "شرایط استفاده از خدمات و دوره‌های کژال متد، سیاست بازگشت وجه، حریم خصوصی و محدودیت مسئولیت.",
 };
 
 const sections = (site: { name: string }) => [

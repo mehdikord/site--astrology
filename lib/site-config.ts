@@ -32,6 +32,7 @@ export const nav = [
   { href: "/", label: "خانه" },
   { href: "/services", label: "خدمات" },
   { href: "/courses", label: "دوره‌ها" },
+  { href: "/#date-converter", label: "تبدیل تاریخ" },
   { href: "/blog", label: "مقالات" },
   { href: "/about", label: "درباره ما" },
   { href: "/contact", label: "تماس با ما" },

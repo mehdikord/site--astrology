@@ -9,7 +9,7 @@ import { getGeneralFaqs, getServices } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "تماس با ما",
-  description: "برای ثبت سفارش تحلیل، مشاوره‌ی انتخاب دوره یا هر سوالی از طریق تلگرام، واتس‌اپ یا ایمیل با فاطمه یوسفی در ارتباط باشید.",
+  description: "برای ثبت سفارش تحلیل، مشاوره‌ی انتخاب دوره یا هر سوالی از طریق تلگرام، واتس‌اپ یا ایمیل با کژال متد در ارتباط باشید.",
 };
 
 export default async function ContactPage() {

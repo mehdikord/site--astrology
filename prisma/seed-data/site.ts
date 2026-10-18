@@ -3,11 +3,11 @@
  * برای مشتری فقط همین فایل را ویرایش کنید.
  */
 export const site = {
-  name: "فاطمه یوسفی",
-  nameEn: "FATEMEH YOUSEFI",
+  name: "کژال متد",
+  nameEn: "KAZHAL METHOD",
   tagline: "همسو با مسیر حقیقی‌ات",
   description:
-    "فاطمه یوسفی؛ تحلیل تخصصی ماتریکس سرنوشت، دشا و آسترولوژی ماه تولد. نقشه‌ی آسمانِ لحظه‌ی تولدت را بخوان و مسیر آگاهانه‌تری بساز.",
+    "کژال متد؛ تحلیل تخصصی ماتریکس سرنوشت، دشا و آسترولوژی ماه تولد. نقشه‌ی آسمانِ لحظه‌ی تولدت را بخوان و مسیر آگاهانه‌تری بساز.",
   url: "https://fatemehyousefi.com",
 
   // اطلاعات تماس
@@ -31,6 +31,7 @@ export const nav = [
   { href: "/", label: "خانه" },
   { href: "/services", label: "خدمات" },
   { href: "/courses", label: "دوره‌ها" },
+  { href: "/#date-converter", label: "تبدیل تاریخ" },
   { href: "/blog", label: "مقالات" },
   { href: "/about", label: "درباره ما" },
   { href: "/contact", label: "تماس با ما" },

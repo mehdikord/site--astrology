@@ -21,8 +21,8 @@ export const SETTING_GROUPS: { key: SettingGroup; title: string; description: st
 ];
 
 export const SETTING_FIELDS: SettingField[] = [
-  { key: "site_name", label: "نام سایت", group: "general", default: "فاطمه یوسفی" },
-  { key: "site_name_en", label: "نام انگلیسی", group: "general", default: "FATEMEH YOUSEFI", type: "ltr" },
+  { key: "site_name", label: "نام سایت", group: "general", default: "کژال متد" },
+  { key: "site_name_en", label: "نام انگلیسی", group: "general", default: "KAZHAL METHOD", type: "ltr" },
   { key: "site_tagline", label: "شعار", group: "general", default: "همسو با مسیر حقیقی‌ات" },
   {
     key: "site_description",
@@ -31,7 +31,7 @@ export const SETTING_FIELDS: SettingField[] = [
     type: "textarea",
     hint: "در فوتر و توضیحات متای صفحات استفاده می‌شود.",
     default:
-      "فاطمه یوسفی؛ تحلیل تخصصی ماتریکس سرنوشت، دشا و آسترولوژی ماه تولد. نقشه‌ی آسمانِ لحظه‌ی تولدت را بخوان و مسیر آگاهانه‌تری بساز.",
+      "کژال متد؛ تحلیل تخصصی ماتریکس سرنوشت، دشا و آسترولوژی ماه تولد. نقشه‌ی آسمانِ لحظه‌ی تولدت را بخوان و مسیر آگاهانه‌تری بساز.",
   },
   { key: "site_url", label: "آدرس سایت", group: "general", default: "https://fatemehyousefi.com", type: "url" },
 

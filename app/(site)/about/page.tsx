@@ -9,7 +9,7 @@ import { getSettings } from "@/lib/settings";
 
 export const metadata: Metadata = {
   title: "درباره ما",
-  description: "داستان فاطمه یوسفی و روش او در تحلیل ماتریکس، دشا و آسترولوژی — نگاهی که چارت را نقشه می‌داند، نه حکم.",
+  description: "داستان کژال متد و روش او در تحلیل ماتریکس، دشا و آسترولوژی — نگاهی که چارت را نقشه می‌داند، نه حکم.",
 };
 
 const VALUES = [
@@ -51,7 +51,7 @@ export default async function AboutPage() {
           </h2>
           <div className="prose-fa mt-6">
             <p>
-              مسیر فاطمه یوسفی از یک سوال ساده شروع شد: «چرا با وجود تلاش، بعضی الگوها در زندگی‌ام تکرار می‌شوند؟» جست‌وجو برای این
+              مسیر کژال متد از یک سوال ساده شروع شد: «چرا با وجود تلاش، بعضی الگوها در زندگی‌ام تکرار می‌شوند؟» جست‌وجو برای این
               پاسخ، به سال‌ها مطالعه‌ی آسترولوژی غربی، جیوتیش (آسترولوژی ودیک) و ماتریکس سرنوشت انجامید — و به این باور که
               هر کدام از این سیستم‌ها یک تکه از پازل را نشان می‌دهند.
             </p>
@@ -80,7 +80,7 @@ export default async function AboutPage() {
       <section className="section">
         <div className="container-x">
           <Reveal className="mx-auto max-w-2xl text-center">
-            <span className="eyebrow eyebrow-fa justify-center">روش فاطمه یوسفی</span>
+            <span className="eyebrow eyebrow-fa justify-center">روش کژال متد</span>
             <h2 className="mt-4 text-3xl text-cream sm:text-4xl">سه ستون، یک تصویر</h2>
           </Reveal>
           <div className="mt-14 grid gap-6 md:grid-cols-3">

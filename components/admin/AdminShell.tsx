@@ -24,7 +24,7 @@ function Sidebar({ onNavigate, logoId, badges }: { onNavigate?: () => void; logo
         <LogoMark className="h-10 w-10" gradientId={logoId} />
         <span className="leading-tight">
           <span className="block text-[15px] font-extrabold text-cream">پنل مدیریت</span>
-          <span className="block text-[10px] tracking-[0.3em] text-gold-500/70">FATEMEH YOUSEFI</span>
+          <span className="block text-[10px] tracking-[0.3em] text-gold-500/70">KAZHAL METHOD</span>
         </span>
       </Link>
 
