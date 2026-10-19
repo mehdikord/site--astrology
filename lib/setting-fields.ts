@@ -33,11 +33,11 @@ export const SETTING_FIELDS: SettingField[] = [
     default:
       "کژال متد؛ تحلیل تخصصی ماتریکس سرنوشت، دشا و آسترولوژی ماه تولد. نقشه‌ی آسمانِ لحظه‌ی تولدت را بخوان و مسیر آگاهانه‌تری بساز.",
   },
-  { key: "site_url", label: "آدرس سایت", group: "general", default: "https://fatemehyousefi.com", type: "url" },
+  { key: "site_url", label: "آدرس سایت", group: "general", default: "https://kazhalmethod.com", type: "url" },
 
   { key: "phone", label: "شماره تماس (نمایشی)", group: "contact", default: "۰۹۱۲ ۰۰۰ ۰۰۰۰", hint: "همان‌طور که در سایت نمایش داده می‌شود." },
   { key: "phone_raw", label: "شماره تماس بین‌المللی", group: "contact", default: "989120000000", type: "ltr", hint: "بدون + و صفر — برای لینک تماس (مثال: 989121234567)." },
-  { key: "email", label: "ایمیل", group: "contact", default: "hello@fatemehyousefi.com", type: "email" },
+  { key: "email", label: "ایمیل", group: "contact", default: "hello@kazhalmethod.com", type: "email" },
   { key: "address", label: "آدرس", group: "contact", default: "تهران، ایران — جلسات به‌صورت آنلاین" },
   { key: "hours", label: "ساعات پاسخگویی", group: "contact", default: "شنبه تا پنجشنبه، ۱۰ تا ۱۸" },
 

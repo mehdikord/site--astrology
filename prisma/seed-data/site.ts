@@ -8,12 +8,12 @@ export const site = {
   tagline: "همسو با مسیر حقیقی‌ات",
   description:
     "کژال متد؛ تحلیل تخصصی ماتریکس سرنوشت، دشا و آسترولوژی ماه تولد. نقشه‌ی آسمانِ لحظه‌ی تولدت را بخوان و مسیر آگاهانه‌تری بساز.",
-  url: "https://fatemehyousefi.com",
+  url: "https://kazhalmethod.com",
 
   // اطلاعات تماس
   phone: "۰۹۱۲ ۰۰۰ ۰۰۰۰",
   phoneRaw: "989120000000",
-  email: "hello@fatemehyousefi.com",
+  email: "hello@kazhalmethod.com",
   address: "تهران، ایران — جلسات به‌صورت آنلاین",
   hours: "شنبه تا پنجشنبه، ۱۰ تا ۱۸",
 

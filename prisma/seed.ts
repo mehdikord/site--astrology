@@ -18,7 +18,7 @@ async function seedAdmin() {
   const mobile = "09120000000";
   if (await db.admin.findUnique({ where: { mobile } })) return console.log("• admin already exists:", mobile);
   await db.admin.create({
-    data: { name: "Admin", mobile, email: "admin@fatemehyousefi.com", password: await hashPassword("password") },
+    data: { name: "Admin", mobile, email: "admin@kazhalmethod.com", password: await hashPassword("password") },
   });
   console.log("✓ admin created:", mobile);
 }

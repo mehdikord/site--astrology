@@ -78,7 +78,7 @@ export default async function Hero() {
             <span className="h-4 w-px bg-gold-500/60" />
             <span>دشا</span>
             <span className="h-4 w-px bg-gold-500/60" />
-            <span>آسترولوژی ماه تولد</span>
+            <span>آسترولوژی</span>
           </div>
 
           <p className="mt-6 max-w-lg leading-8 text-muted animate-fade-up [animation-delay:950ms]">
